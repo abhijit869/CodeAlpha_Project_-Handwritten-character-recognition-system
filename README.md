@@ -1,80 +1,54 @@
-# CodeAlpha_Project_-Handwritten-character-recognition-system
-# 🧠 Handwritten Character Recognition using EMNIST
+🧠 Handwritten Character & Digit Recognition
+📋 Overview
 
-A **deep learning-based handwritten character recognition system** built with **TensorFlow**, **Keras**, and **OpenCV**.  
-This project uses the **EMNIST Balanced dataset** to train a robust Convolutional Neural Network (CNN) capable of recognizing handwritten **letters (A–Z, a–z)** and **digits (0–9)**.  
+This project implements a deep learning–based handwritten recognition system capable of identifying both digits (0–9) and characters (A–Z, a–z).
+It is trained using EMNIST and custom balanced datasets, optimized for real-world handwriting variation.
 
-The implementation is **Google Colab ready**, includes **image preprocessing for custom uploads**, and provides **detailed visualizations** for performance tracking.
+Two versions of the model are included:
 
----
+🧩 handwriting_recognition_model — Standard model trained for general accuracy
 
-## 🚀 Features
-- ✅ Train on **EMNIST (Balanced)** dataset  
-- 🧩 Recognizes **letters and digits**  
-- ⚡ Uses **CNN architecture** with dropout regularization  
-- 📈 Generates **accuracy/loss graphs**  
-- 🖼️ Supports **custom image upload** for prediction  
-- 💾 Automatically saves trained model (`.h5` file)  
-- 🔍 Includes **confusion matrix** and **classification report**
+🦾 handwriting_robust_balanced_model — Improved model trained with balanced data for thin, slanted, or noisy handwriting
 
----
+🚀 Features
+Auto lode Dataset are use MNIST
+✅ Recognizes handwritten digits and alphabets
+✅ Trained on EMNIST and custom balanced datasets
+✅ Supports JPG/PNG upload prediction
+✅ Includes robust preprocessing (thresholding, noise removal, centering)
+✅ Evaluates test samples from Excel file (mnist_test.xlsx)
+✅ 100% compatible with Google Colab or local Python
 
-## 🧠 Model Overview
-The model is a **Convolutional Neural Network (CNN)** optimized for handwritten data recognition:
-- Convolutional layers with ReLU activation  
-- MaxPooling for dimensionality reduction  
-- Dropout layers for generalization  
-- Dense layers for feature mapping  
-- Softmax activation for final classification
+🧩 Project Structure
+📁 Handwritten_Character_Recognition/
+│
+├── handwriting_recognition_model/           # Base CNN model script / saved weights
+├── handwriting_robust_balanced_model/       # Improved model with balanced EMNIST data
+├── mnist_test.xlsx                          # Test dataset for validation and evaluation
+├── README.md                                # Project documentation (this file)
+└── requirements.txt                         # Python dependencies (optional)
 
----
+⚙️ Installation & Setup
+🧰 Requirements
 
-## 🧩 Dataset Information
-**Dataset:** [EMNIST Balanced](https://www.nist.gov/itl/products-and-services/emnist-dataset)  
-**Classes:** 47 (26 uppercase + 26 lowercase + 10 digits merged)  
-**Input Shape:** 28x28 grayscale images  
+Python 3.8+
 
-⚙️ Installation
-1️⃣ Clone the Repository
-git clone https://github.com/<your-username>/handwritten-character-recognition-emnist.git
-cd handwritten-character-recognition-emnist
+TensorFlow / Keras
 
-2️⃣ Install Dependencies
+OpenCV
 
-Install all necessary Python packages using:
+NumPy
 
-pip install -r requirements.txt
+Matplotlib
 
-3️⃣ Run the Project
+Seaborn
 
-To train the model:
+scikit-learn
 
-python handwriting_robust_balanced_model.py
+Pillow
 
+Pandas
 
-Or to test pre-trained models:
+Install all dependencies:
 
-python handwriting_recognition_model.py
-
-Loaded using:
-python
-import tensorflow_datasets as tfds
-
-📈 Results Visualization
-
-The model training displays:
-
-Accuracy vs Epochs
-
-Loss vs Epochs
-
-Confusion Matrix for evaluation
-
-🧑‍💻 Author
-
-Abhijit Biswas
-Deep Learning Developer | AI & Computer Vision Enthusiast
-
-🌐 GitHub: https://github.com/abhijit869/CodeAlpha_Project_-Handwritten-character-recognition-system
-emnist = tfds.load('emnist/balanced')
-
+pip install tensorflow tensorflow_datasets opencv-python numpy matplotlib seaborn scikit-learn pillow pandas
