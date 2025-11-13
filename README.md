@@ -99,3 +99,4 @@ Validation Accuracy: 96.88%
 
 Predicted Class: 12 (Character: ‘M’)
 Confidence: 98.4%
+
