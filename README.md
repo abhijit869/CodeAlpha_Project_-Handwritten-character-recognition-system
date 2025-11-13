@@ -39,32 +39,34 @@ All image preprocessing, dataset handling, and visualization code works flawless
 ## ⚙️ Setup in Google Colab
 
 ### 🔹 Step 1: Clone Repository
-bash
+
+```bash
 !git clone https://github.com/<your-username>/handwritten-character-recognition-emnist.git
-%cd handwritten-character-recognition-emnist 
-🔹 Step 2: Install Dependencies
-bash
-Copy code
+%cd handwritten-character-recognition-emnist
+```
+
+### 🔹 Step 2: Install Dependencies
+
+```bash
 !pip install -r requirements.txt
-🔹 Step 3: Run Training
-bash
-Copy code
+```
+
+### 🔹 Step 3: Run Training
+
+```bash
 !python handwriting_robust_balanced_model.py
+```
 This will:
+- Load EMNIST Balanced.
+- Train the CNN model.
+- Save the trained model as `handwriting_recognition_model.h5`.
+- Display accuracy/loss graphs.
 
-Load EMNIST Balanced
+### 🔹 Step 4: Upload & Test Images
 
-Train the CNN model
+You can upload any `.png` or `.jpg` handwritten character:
 
-Save the trained model as handwriting_recognition_model.h5
-
-Display accuracy/loss graphs
-
-🔹 Step 4: Upload & Test Images
-You can upload any .png or .jpg handwritten character:
-
-python
-Copy code
+```python
 from google.colab import files
 from tensorflow.keras.models import load_model
 import cv2, numpy as np
@@ -79,24 +81,26 @@ for filename in uploaded.keys():
     img = img.reshape(1, 28, 28, 1)
     pred = np.argmax(model.predict(img))
     print(f"{filename} → Predicted Class: {pred}")
-🧠 Model Architecture
-Conv2D → ReLU → MaxPooling → Dropout
+```
 
-Flatten → Dense → Dropout → Softmax
+---
 
-Optimizer: Adam
+## 🧠 Model Architecture
 
-Loss: categorical_crossentropy
+- Conv2D → ReLU → MaxPooling → Dropout
+- Flatten → Dense → Dropout → Softmax
 
-Metrics: accuracy
+**Optimizer:** Adam  
+**Loss:** categorical_crossentropy  
+**Metrics:** accuracy
 
-📊 Example Output
-yaml
-Copy code
+---
+
+## 📊 Example Output
+
+```yaml
 Epoch 10/10
 Accuracy: 97.42%
 Validation Accuracy: 96.88%
-
-Predicted Class: 12 (Character: ‘M’)
-Confidence: 98.4%
+```
 
