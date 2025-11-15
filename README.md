@@ -1,106 +1,121 @@
-# 🧠 Handwritten Character Recognition (EMNIST) — Colab Ready ✅
+# Handwritten Character Recognition System
 
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?logo=tensorflow)
-![Keras](https://img.shields.io/badge/Keras-API-red?logo=keras)
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
-![Google Colab](https://img.shields.io/badge/Colab-Ready-yellow?logo=googlecolab)
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-
-A **fully working and tested deep learning project** for **handwritten character recognition** using the **EMNIST Balanced dataset**, implemented in **TensorFlow + Keras** and tested end-to-end in **Google Colab**.  
-
-It can **train**, **evaluate**, and **predict** handwritten **letters (A–Z, a–z)** and **digits (0–9)** from uploaded images.  
-All image preprocessing, dataset handling, and visualization code works flawlessly in Colab.
+**Fast, Robust & Interactive Deep Learning Pipeline for Digits and Letters (MNIST/EMNIST)**
 
 ---
 
-## 🚀 Key Highlights
-- ✅ **100% functional & tested in Google Colab**
-- 🧩 **EMNIST Balanced** dataset for letters and digits
-- 🧠 **CNN architecture** (Convolutional Neural Network)
-- 🖼️ **Image upload + preprocessing** using OpenCV & Pillow
-- 📊 **Accuracy, loss & confusion matrix** visualization
-- 💾 **Automatic model saving** (`.h5`)
-- 🔍 **Real-time prediction** on custom images
+## 🚀 Features
+
+- **Train in ~2 minutes (MNIST) or robust mode (EMNIST Balanced)**
+- **Accurate recognition** of handwritten digits, uppercase, and lowercase letters
+- **Interactive testing** for your own handwritten images (with Google Colab upload or local image path)
+- **Real-time visualizations:** training curves, confusion matrix, prediction previews
+- **Image preprocessing pipeline:** cropping, resizing, centering (with Center of Mass for robust mode)
+- **High performance:** mixed precision, early stopping, model checkpointing
+- **Production-ready code** with modular classes (Config, DataLoader, CNN, Trainer, Tester, Evaluator)
+- **Colab ready** or run locally
 
 ---
 
-## 📂 Project Structure
+## 📦 Included Files
 
-| File | Description |
-|------|--------------|
-| `handwriting_robust_balanced_model.py` | Main training + testing script |
-| `handwriting_recognition_model.h5` | Saved trained model |
-| `mnist_test.xlsx` | Example test data / predictions |
-| `requirements.txt` | Dependencies list |
-| `README.md` | Documentation (this file) |
+- `handwriting_recognition_model.py` - Fast digits-only pipeline (MNIST, quick training)
+- `handwriting_robust_balanced_model.py` - Robust pipeline for digits + A-Z + a-z (EMNIST Balanced, with augmentation & advanced preprocessing)
+- `mnist_test.csv` - Sample CSV-formatted digit images for testing/evaluation
 
 ---
 
-## ⚙️ Setup in Google Colab
+## 🛠️ Requirements
 
-### 🔹 Step 1: Clone Repository
+See [`requirements.txt`](requirements.txt) for detailed libraries.
 
-```bash
-!git clone https://github.com/<your-username>/handwritten-character-recognition-emnist.git
-%cd handwritten-character-recognition-emnist
-```
+**Major dependencies:**
+- TensorFlow (incl. Keras and mixed-precision)
+- NumPy
+- Matplotlib
+- Seaborn
+- Pillow
+- scikit-learn
+- OpenCV
+- (optional for EMNIST) `tensorflow-datasets`
+- (optional for Colab testing) `google.colab`
 
-### 🔹 Step 2: Install Dependencies
+---
 
-```bash
-!pip install -r requirements.txt
-```
+## ✨ Quick Start (Google Colab recommended)
 
-### 🔹 Step 3: Run Training
-
-```bash
-!python handwriting_robust_balanced_model.py
-```
-This will:
-- Load EMNIST Balanced.
-- Train the CNN model.
-- Save the trained model as `handwriting_recognition_model.h5`.
-- Display accuracy/loss graphs.
-
-### 🔹 Step 4: Upload & Test Images
-
-You can upload any `.png` or `.jpg` handwritten character:
-
+> **For MNIST digits only (quick demo):**
 ```python
-from google.colab import files
-from tensorflow.keras.models import load_model
-import cv2, numpy as np
+!pip install tensorflow numpy matplotlib seaborn pillow scikit-learn opencv-python
+# Upload 'handwriting_recognition_model.py' and run
+python handwriting_recognition_model.py
+```
 
-uploaded = files.upload()
-model = load_model('handwriting_recognition_model.h5')
-
-for filename in uploaded.keys():
-    img = cv2.imread(filename, cv2.IMREAD_GRAYSCALE)
-    img = cv2.resize(img, (28, 28))
-    img = img / 255.0
-    img = img.reshape(1, 28, 28, 1)
-    pred = np.argmax(model.predict(img))
-    print(f"{filename} → Predicted Class: {pred}")
+> **For robust character recognition (digits, A-Z, a-z):**
+```python
+!pip install tensorflow tensorflow-datasets numpy matplotlib seaborn pillow scikit-learn opencv-python
+# Upload 'handwriting_robust_balanced_model.py' and run
+python handwriting_robust_balanced_model.py
 ```
 
 ---
 
-## 🧠 Model Architecture
+## 🖍️ Interactive Testing
 
-- Conv2D → ReLU → MaxPooling → Dropout
-- Flatten → Dense → Dropout → Softmax
+### Google Colab
+- After model training completes, you'll see prompts to upload and test your own handwritten images using:
+    - MS Paint drawings
+    - Scanned photos (white background, black pen)
+    - PNG/JPG/BMP/etc
 
-**Optimizer:** Adam  
-**Loss:** categorical_crossentropy  
-**Metrics:** accuracy
+### Local Testing
+- Use the provided `ImageTester` class in each script:
+```python
+from handwriting_recognition_model import ImageTester
+tester = ImageTester(model)
+tester.test_single_image('path/to/your_image.png')
+```
 
 ---
 
-## 📊 Example Output
+## 🧠 Model Customization
 
-```yaml
-Epoch 10/10
-Accuracy: 97.42%
-Validation Accuracy: 96.88%
-```
+- Change data subset (`Config.USE_DATA_SUBSET` for quick testing)
+- Increase epochs for better accuracy (`Config.EPOCHS`)
+- Switch between MNIST and EMNIST as needed (`Config.DATASET` in config)
+
+---
+
+## 📈 Training & Evaluation Outputs
+
+- **Accuracy/Loss curves**
+- **Confusion matrix** (matplotlib + seaborn)
+- **Top 5 predictions per image** (with confidence)
+- **Preprocessing visualization pipeline**
+
+---
+
+## 📝 CSV Testing
+
+You can evaluate with ready-to-use csv-formatted digit images (`mnist_test.csv`). Just load as numpy arrays and feed to the model.
+
+---
+
+## 🙏 Credits
+
+- [EMNIST Dataset](https://www.tensorflow.org/datasets/community_catalog/huggingface/emnist)
+- [MNIST Dataset](http://yann.lecun.com/exdb/mnist/)
+- Project by [Abhijit869](https://github.com/abhijit869)
+
+---
+
+## 📣 Get Started!
+
+1. Clone/download the repo
+2. Install required packages (`requirements.txt`)
+3. Run either script (pick your accuracy/speed tradeoff)
+4. Visualize results, test your own handwriting
+
+**Happy coding & recognition! 🎉**
+
 
