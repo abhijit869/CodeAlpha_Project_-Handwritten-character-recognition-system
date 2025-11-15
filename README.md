@@ -1,4 +1,9 @@
-# Handwritten Character Recognition System
+# Handwritten Character Recognition System 🖊️🔍🧠
+
+[![Python](https://img.shields.io/badge/Python-3.7%2B-blue)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
+[![Stars](https://img.shields.io/github/stars/abhijit869/CodeAlpha_Project_-Handwritten-character-recognition-system?style=social)](https://github.com/abhijit869/CodeAlpha_Project_-Handwritten-character-recognition-system)
+[![Issues](https://img.shields.io/github/issues/abhijit869/CodeAlpha_Project_-Handwritten-character-recognition-system)](https://github.com/abhijit869/CodeAlpha_Project_-Handwritten-character-recognition-system/issues)
 
 **Fast, Robust & Interactive Deep Learning Pipeline for Digits and Letters (MNIST/EMNIST)**
 
@@ -125,4 +130,5 @@ See [LICENSE](LICENSE) in this repository for full details.
 4. Visualize results, test your own handwriting
 
 **Happy coding & recognition! 🎉**
+
 
