@@ -12,16 +12,16 @@
 - **Real-time visualizations:** training curves, confusion matrix, prediction previews
 - **Image preprocessing pipeline:** cropping, resizing, centering (with Center of Mass for robust mode)
 - **High performance:** mixed precision, early stopping, model checkpointing
-- **Production-ready code** with modular classes (Config, DataLoader, CNN, Trainer, Tester, Evaluator)
+- **Production-ready code** with modular classes (*Config, DataLoader, CNN, Trainer, Tester, Evaluator*)
 - **Colab ready** or run locally
 
 ---
 
 ## 📦 Included Files
 
-- `handwriting_recognition_model.py` - Fast digits-only pipeline (MNIST, quick training)
-- `handwriting_robust_balanced_model.py` - Robust pipeline for digits + A-Z + a-z (EMNIST Balanced, with augmentation & advanced preprocessing)
-- `mnist_test.csv` - Sample CSV-formatted digit images for testing/evaluation
+- `handwriting_recognition_model.py` – Fast digits-only pipeline (**Python**)
+- `handwriting_robust_balanced_model.py` – Robust pipeline for digits + A-Z + a-z (**Python**)
+- `mnist_test.csv` – Sample CSV-formatted digit images (**CSV format**) for testing/evaluation
 
 ---
 
@@ -29,16 +29,19 @@
 
 See [`requirements.txt`](requirements.txt) for detailed libraries.
 
-**Major dependencies:**
-- TensorFlow (incl. Keras and mixed-precision)
-- NumPy
-- Matplotlib
-- Seaborn
-- Pillow
-- scikit-learn
-- OpenCV
-- (optional for EMNIST) `tensorflow-datasets`
-- (optional for Colab testing) `google.colab`
+### **Programming Language**
+- **Python 3.6+**
+
+### **Tools, Libraries & Frameworks**
+- **TensorFlow** (incl. Keras and mixed-precision)
+- **NumPy**
+- **Matplotlib**
+- **Seaborn**
+- **Pillow**
+- **scikit-learn**
+- **OpenCV**
+- *(optional for EMNIST)*: **tensorflow-datasets**
+- *(optional for Colab testing)*: **google.colab**
 
 ---
 
@@ -47,14 +50,12 @@ See [`requirements.txt`](requirements.txt) for detailed libraries.
 > **For MNIST digits only (quick demo):**
 ```python
 !pip install tensorflow numpy matplotlib seaborn pillow scikit-learn opencv-python
-# Upload 'handwriting_recognition_model.py' and run
 python handwriting_recognition_model.py
 ```
 
 > **For robust character recognition (digits, A-Z, a-z):**
 ```python
 !pip install tensorflow tensorflow-datasets numpy matplotlib seaborn pillow scikit-learn opencv-python
-# Upload 'handwriting_robust_balanced_model.py' and run
 python handwriting_robust_balanced_model.py
 ```
 
@@ -62,13 +63,13 @@ python handwriting_robust_balanced_model.py
 
 ## 🖍️ Interactive Testing
 
-### Google Colab
+### **Google Colab**
 - After model training completes, you'll see prompts to upload and test your own handwritten images using:
     - MS Paint drawings
     - Scanned photos (white background, black pen)
     - PNG/JPG/BMP/etc
 
-### Local Testing
+### **Local Testing**
 - Use the provided `ImageTester` class in each script:
 ```python
 from handwriting_recognition_model import ImageTester
@@ -109,6 +110,13 @@ You can evaluate with ready-to-use csv-formatted digit images (`mnist_test.csv`)
 
 ---
 
+## 📄 License
+
+**MIT License**  
+See [LICENSE](LICENSE) in this repository for full details.
+
+---
+
 ## 📣 Get Started!
 
 1. Clone/download the repo
@@ -117,5 +125,4 @@ You can evaluate with ready-to-use csv-formatted digit images (`mnist_test.csv`)
 4. Visualize results, test your own handwriting
 
 **Happy coding & recognition! 🎉**
-
 
